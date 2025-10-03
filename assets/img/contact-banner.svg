@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f093fb" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f5576c" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="blur1" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="80"/>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g1)"/>
+  <circle cx="1300" cy="150" r="260" fill="url(#g2)" filter="url(#blur1)"/>
+  <circle cx="200" cy="750" r="220" fill="url(#g2)" filter="url(#blur1)"/>
+  <g fill="#fff" fill-opacity="0.08">
+    <rect x="-100" y="200" width="900" height="140" rx="24" transform="rotate(-12)"/>
+    <rect x="700" y="600" width="900" height="140" rx="24" transform="rotate(8)"/>
+    <rect x="200" y="-80" width="800" height="140" rx="24" transform="rotate(22)"/>
+  </g>
+  <g font-family="'Roboto', Arial, sans-serif" fill="#ffffff">
+    <text x="8%" y="55%" font-size="68" font-weight="700">Let’s build something great together</text>
+    <text x="8%" y="64%" font-size="28" fill-opacity="0.9">WhatsApp • Email • LinkedIn — get in touch and start your project</text>
+  </g>
+</svg>
