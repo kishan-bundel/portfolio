@@ -15,11 +15,15 @@
     <meta property="og:url" content="https://kishan-bundel.github.io/portfolio/">
     <meta property="og:image" content="https://kishan-bundel.github.io/portfolio/kishan-bundel-profile-photo.jpg">
     <link rel="icon" href="kishan-bundel-profile-photo.jpg" type="image/png">
-    <!-- Local CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/google-fonts.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/aos.css" rel="stylesheet">
+  <!-- Local CSS Files (preload + swap to improve FCP/LCP) -->
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="assets/css/bootstrap.min.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/css/google-fonts.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="assets/css/google-fonts.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="assets/css/font-awesome.min.css" rel="stylesheet"></noscript>
+  <link rel="preload" href="assets/css/aos.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="assets/css/aos.css" rel="stylesheet"></noscript>
 </head>
 <body>
 
@@ -59,7 +63,7 @@
     <h2 class="text-center fw-bold mb-5" data-aos="fade-up">About Me</h2>
     <div class="row align-items-center">
       <div class="col-md-5 text-center mb-4 mb-md-0" data-aos="fade-right">
-        <img src="kishan-bundel-profile-photo.jpg" alt="Kishan Bundel" class="img-fluid rounded-circle about-img" loading="lazy">
+  <img src="kishan-bundel-profile-photo.jpg" alt="Kishan Bundel" class="img-fluid rounded-circle about-img" loading="lazy" width="400" height="400">
       </div>
       <div class="col-md-7" data-aos="fade-up">
         <p>I am a Freelance Full-Stack PHP Developer specializing in Laravel and CodeIgniter frameworks. I build scalable web solutions, E-commerce platforms, APIs, Marketing & CRM automation tools, and school management systems (LMS). Experienced in handling remote projects for international and domestic clients. Passionate about delivering optimized and high-performance solutions for businesses.</p>
@@ -565,7 +569,7 @@
   
 </button>
 
-<div class="position-fixed bottom-0 end-0 me-0 me-md-4 mb-2 mb-md-5 card shadow rounded-4 d-flex flex-column overflow-hidden d-none z-2" id="chatbotContainer" style="max-width: 420px; width: 100%; max-height: 75vh;">
+<div class="position-fixed bottom-0 end-0 me-0 me-md-4 mb-2 mb-md-5 card shadow rounded-4 d-flex flex-column overflow-hidden d-none z-2" id="chatbotContainer" style="max-width: 420px; width: 100%; max-height: 75vh;" aria-hidden="true" inert>
   <div class="bg-primary bg-gradient text-white text-center p-3 position-relative flex-shrink-0">
     <div class="position-absolute top-0 end-0 m-2 d-flex gap-2">
       <button class="btn btn-sm btn-light rounded-circle d-flex align-items-center justify-content-center" onclick="clearChat()" title="Clear Chat">
@@ -629,10 +633,11 @@
 
 
 <!-- Scripts -->
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/aos.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js" defer></script>
+<script src="assets/js/aos.js" defer></script>
 <script>
-  AOS.init({ duration: 1000, once: true });
+  // Initialize AOS after full load to avoid delaying first paint
+  window.addEventListener('load', () => { if (window.AOS) { AOS.init({ duration: 1000, once: true }); } });
   window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
     if (!nav) return;
@@ -680,192 +685,19 @@
     };
   }
 
-  // Enhanced Knowledge Base with context awareness
-  const advancedResponses = {
-    // Personalized greetings
-    'hello': [
-      'Hello! I\'m Kishan\'s AI assistant. 👋 What brings you to my portfolio today?',
-      'Hi there! Great to meet you! I\'m here to help you learn about Kishan\'s expertise. What interests you most?',
-      'Hey! Welcome to Kishan\'s digital workspace. How can I assist you today?'
-    ],
-    
-    'hi': [
-      'Hi! 😊 Thanks for visiting. I\'m here to answer any questions about Kishan\'s services and experience.',
-      'Hello! Ready to explore what Kishan can do for your project? What would you like to know?'
-    ],
-
-    // Comprehensive Services with emojis and details
-    'services': `🚀 **Kishan's Complete Service Portfolio:**
-
-🔹 **Full-Stack PHP Development**
-   • Laravel & CodeIgniter expertise
-   • Custom web applications
-   • API development & integration
-
-🔹 **E-commerce Solutions** 🛒
-   • Complete online stores
-   • Payment gateway integration
-   • Inventory management systems
-
-🔹 **Educational Platforms** 📚
-   • Learning Management Systems (LMS)
-   • School Management Systems
-   • Student portals & tracking
-
-🔹 **Business Automation** ⚡
-   • CRM development
-   • Marketing automation
-   • Lead management systems
-
-🔹 **Technical Specializations**
-   • Database design & optimization
-   • REST API development
-   • Third-party integrations
-   
-💡 *Need something specific? Just ask!*`,
-
-    'experience': `💼 **Kishan's Professional Journey:**
-
-🏢 **Corporate Experience:**
-• **Owebest Technologies** - PHP Developer
-• **Next Big Technology** - Web Developer  
-• **Krishna Padam IT Solution** - PHP Developer
-• **Accentuate E Services** - Web Developer
-
-🌐 **Freelance Success:**
-• 50+ international projects completed
-• 98% client satisfaction rate
-• Expertise in remote collaboration
-• 24/7 support across time zones
-
-🏆 **Key Achievements:**
-• Built scalable LMS serving 10,000+ students
-• Developed multi-vendor e-commerce platforms
-• Created CRM systems managing 100,000+ leads
-• Integrated 25+ payment gateways & APIs
-
-🎯 *Ready to add your project to this success story?*`,
-
-    'projects': `🎨 **Featured Project Showcase:**
-
-📚 **Smart Learning Management System**
-   • Online lessons & video streaming
-   • Student progress tracking
-   • Assignment & quiz management
-   • **Tech:** Laravel, MySQL, Bootstrap, jQuery
-
-🏫 **Complete School Management System**
-   • Timetable automation
-   • Parent-teacher portals
-   • Holiday & event management
-   • **Tech:** Laravel, AJAX, MySQL
-
-🛒 **Multi-Vendor E-commerce Platform**
-   • Vendor dashboard & commission system
-   • Advanced search & filtering
-   • Multi-payment gateway support
-   • **Tech:** CodeIgniter, MySQL, REST APIs
-
-⚡ **Marketing & CRM Automation**
-   • Lead scoring & nurturing
-   • Email campaign management
-   • Sales pipeline tracking
-   • **Tech:** Laravel, MySQL, Email APIs
-
-🔗 **API Integration Suite**
-   • Payment gateways (Stripe, PayPal, Razorpay)
-   • SMS services & social login
-   • Third-party service connections
-   • **Tech:** PHP, REST APIs, OAuth
-
-💡 *Want to see any of these in action? Let me know!*`,
-
-    // Enhanced hiring information
-    'hire': `🤝 **Let's Work Together!**
-
-📞 **Quick Contact Options:**
-• **WhatsApp:** +91 6375222806 (Instant response!)
-• **Email:** kishanbundel8233@gmail.com
-• **LinkedIn:** linkedin.com/in/kishanbundel
-
-💰 **Transparent Pricing:**
-• Competitive hourly rates
-• Fixed-price projects available
-• No hidden costs ever
-• Free consultation included
-
-⏰ **Availability:**
-• Available for immediate start
-• Flexible with time zones
-• Regular progress updates
-• 48-hour communication guarantee
-
-🎯 **What I Need to Get Started:**
-1. Brief project description
-2. Your timeline expectations
-3. Budget range (optional)
-4. Preferred communication method
-
-💬 *Ready to discuss your project? Choose your preferred contact method above!*`,
-
-    // Technical deep dives
-    'laravel': `⚡ **Laravel Expertise Deep Dive:**
-
-🔧 **Advanced Laravel Skills:**
-• **Eloquent ORM** - Complex relationships & queries
-• **Artisan Commands** - Custom CLI tools
-• **Queue Jobs** - Background processing
-• **Event Broadcasting** - Real-time features
-• **Service Providers** - Custom integrations
-
-🏗️ **Architecture Patterns:**
-• Repository Pattern implementation
-• Service Layer architecture
-• SOLID principles adherence
-• Test-driven development (TDD)
-
-📦 **Popular Laravel Packages:**
-• Sanctum (API authentication)
-• Horizon (Queue monitoring)
-• Telescope (Debugging)
-• Spatie packages (Permissions, Media)
-
-🚀 **Recent Laravel Projects:**
-• Multi-tenant SaaS platform
-• Real-time chat application
-• Payment gateway integrations
-• Advanced admin panels
-
-*Want to discuss a Laravel project? I'm ready!*`,
-
-    'api': `🔌 **API Development Mastery:**
-
-⚡ **REST API Expertise:**
-• RESTful architecture design
-• JSON & XML data handling
-• Authentication (JWT, OAuth, API keys)
-• Rate limiting & security
-
-🔗 **Integration Experience:**
-• **Payment Gateways:** Stripe, PayPal, Razorpay, Square
-• **Communication:** Twilio SMS, SendGrid, Mailgun
-• **Social Login:** Google, Facebook, LinkedIn
-• **Cloud Services:** AWS S3, Google Drive, Dropbox
-
-📊 **API Documentation:**
-• Swagger/OpenAPI specifications
-• Postman collections
-• Interactive documentation
-• Version management
-
-🛡️ **Security Best Practices:**
-• Input validation & sanitization
-• SQL injection prevention
-• CORS configuration
-• Error handling & logging
-
-💡 *Need API development or integration? Let's connect!*`
-  };
+  // advancedResponses will be loaded lazily from external file when chatbot first opens
+  let responsesLoaded = false;
+  function loadResponsesIfNeeded() {
+   if (responsesLoaded || window.advancedResponses) return Promise.resolve();
+   return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'assets/js/chatbot-data.js';
+    s.async = true;
+    s.onload = () => { responsesLoaded = true; resolve(); };
+    s.onerror = reject;
+    document.head.appendChild(s);
+   });
+  }
 
   // Essential Functions (defined early to prevent "not defined" errors)
   function playSound(type) {
@@ -989,12 +821,21 @@
     container.classList.toggle('d-none');
     
     if (chatbotOpen) {
-      document.getElementById('chatbotInput').focus();
+      // Remove inert/aria-hidden for accessibility when opened
+      container.removeAttribute('inert');
+      container.removeAttribute('aria-hidden');
+      // Lazy load response data
+      loadResponsesIfNeeded().finally(() => {
+        document.getElementById('chatbotInput').focus();
+      });
       hideNotification();
       localStorage.setItem('chatbotShown', 'true');
       playSound('open');
     } else {
       playSound('close');
+      // Restore for performance/accessibility when hidden
+      container.setAttribute('aria-hidden','true');
+      container.setAttribute('inert','');
     }
   }
 
@@ -1151,7 +992,10 @@
     }
     
     // Check for direct matches first
-    for (const [key, value] of Object.entries(advancedResponses)) {
+    if (!window.advancedResponses) {
+      return getIntelligentFallback(lowerMessage);
+    }
+    for (const [key, value] of Object.entries(window.advancedResponses)) {
       if (lowerMessage.includes(key)) {
         if (Array.isArray(value)) {
           return value[Math.floor(Math.random() * value.length)];
