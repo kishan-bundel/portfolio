@@ -52,6 +52,7 @@
   </div>
 </section>
 
+<main id="main-content">
 <!-- About Section -->
 <section id="about" class="py-5">
   <div class="container">
@@ -104,48 +105,48 @@
     <div class="row g-4 mb-5" data-aos="fade-up" data-aos-delay="80">
       <div class="col-md-6 col-lg-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100">
-          <div class="d-flex align-items-center mb-2">
-            <i class="fas fa-database text-primary me-2"></i>
+          <div class="d-flex align-items-center mb-2" id="skill-label-laravel">
+            <i class="fas fa-database text-primary me-2" aria-hidden="true"></i>
             <strong class="small">Laravel / PHP</strong>
           </div>
           <div class="progress" style="height: 6px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-labelledby="skill-label-laravel" aria-valuetext="Laravel and PHP proficiency: Advanced (95%)."></div>
           </div>
           <small class="text-muted d-block mt-1">Advanced</small>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100">
-          <div class="d-flex align-items-center mb-2">
-            <i class="fas fa-globe text-primary me-2"></i>
+          <div class="d-flex align-items-center mb-2" id="skill-label-frontend">
+            <i class="fas fa-globe text-primary me-2" aria-hidden="true"></i>
             <strong class="small">Frontend (HTML/CSS/JS)</strong>
           </div>
           <div class="progress" style="height: 6px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-labelledby="skill-label-frontend" aria-valuetext="Frontend stack proficiency: Expert (90%)."></div>
           </div>
           <small class="text-muted d-block mt-1">Expert</small>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100">
-          <div class="d-flex align-items-center mb-2">
-            <i class="fas fa-network-wired text-primary me-2"></i>
+          <div class="d-flex align-items-center mb-2" id="skill-label-api">
+            <i class="fas fa-network-wired text-primary me-2" aria-hidden="true"></i>
             <strong class="small">API / Integrations</strong>
           </div>
           <div class="progress" style="height: 6px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-labelledby="skill-label-api" aria-valuetext="API and integration proficiency: Strong (92%)."></div>
           </div>
           <small class="text-muted d-block mt-1">Strong</small>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100">
-          <div class="d-flex align-items-center mb-2">
-            <i class="fas fa-cogs text-primary me-2"></i>
+          <div class="d-flex align-items-center mb-2" id="skill-label-automation">
+            <i class="fas fa-cogs text-primary me-2" aria-hidden="true"></i>
             <strong class="small">Automation / CRM</strong>
           </div>
           <div class="progress" style="height: 6px;">
-            <div class="progress-bar bg-primary" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-labelledby="skill-label-automation" aria-valuetext="Automation and CRM proficiency: Advanced (88%)."></div>
           </div>
           <small class="text-muted d-block mt-1">Advanced</small>
         </div>
@@ -161,7 +162,7 @@
               <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
                 <i class="fas fa-code"></i>
               </div>
-              <h6 class="mb-0 fw-bold">Backend & Core</h6>
+              <h3 class="h6 mb-0 fw-bold">Backend & Core</h3>
             </div>
             <div class="d-flex flex-wrap gap-2">
               <span class="badge bg-primary">PHP</span>
@@ -182,7 +183,7 @@
               <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
                 <i class="fas fa-desktop"></i>
               </div>
-              <h6 class="mb-0 fw-bold">Frontend</h6>
+              <h3 class="h6 mb-0 fw-bold">Frontend</h3>
             </div>
             <div class="d-flex flex-wrap gap-2">
               <span class="badge bg-primary">HTML</span>
@@ -203,7 +204,7 @@
               <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
                 <i class="fas fa-tools"></i>
               </div>
-              <h6 class="mb-0 fw-bold">Tools & Automation</h6>
+              <h3 class="h6 mb-0 fw-bold">Tools & Automation</h3>
             </div>
             <div class="d-flex flex-wrap gap-2">
               <span class="badge bg-primary">Git/GitHub</span>
@@ -224,7 +225,7 @@
               <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
                 <i class="fas fa-user-check"></i>
               </div>
-              <h6 class="mb-0 fw-bold">Soft Skills</h6>
+              <h3 class="h6 mb-0 fw-bold">Soft Skills</h3>
             </div>
             <div class="d-flex flex-wrap gap-2">
               <span class="badge bg-primary">Problem Solving</span>
@@ -245,7 +246,7 @@
               <div class="bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;">
                 <i class="fas fa-layer-group"></i>
               </div>
-              <h6 class="mb-0 fw-bold">Ecosystem</h6>
+              <h3 class="h6 mb-0 fw-bold">Ecosystem</h3>
             </div>
             <div class="d-flex flex-wrap gap-2">
               <span class="badge bg-primary">JSON</span>
@@ -300,7 +301,7 @@
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="h6 fw-bold mb-0">PHP Developer</h5>
+              <h3 class="h6 fw-bold mb-0">PHP Developer</h3>
               <span class="badge bg-primary">Full-Time</span>
             </div>
             <div class="small text-muted mb-2">Owebest Technologies Pvt. Ltd. • 2024 – Present</div>
@@ -323,7 +324,7 @@
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="h6 fw-bold mb-0">Web Developer</h5>
+              <h3 class="h6 fw-bold mb-0">Web Developer</h3>
               <span class="badge bg-primary">Full-Time</span>
             </div>
             <div class="small text-muted mb-2">Next Big Technology (NBT) • 2023 – 2024</div>
@@ -346,7 +347,7 @@
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="h6 fw-bold mb-0">PHP Developer</h5>
+              <h3 class="h6 fw-bold mb-0">PHP Developer</h3>
               <span class="badge bg-primary">Full-Time</span>
             </div>
             <div class="small text-muted mb-2">Krishna Padam IT Solution (KPIS) • 2022 – 2023</div>
@@ -369,7 +370,7 @@
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="h6 fw-bold mb-0">Web Developer</h5>
+              <h3 class="h6 fw-bold mb-0">Web Developer</h3>
               <span class="badge bg-primary">Full-Time</span>
             </div>
             <div class="small text-muted mb-2">Accentuate E Services Pvt. Ltd. • 2021 – 2022</div>
@@ -392,7 +393,7 @@
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
-              <h5 class="h6 fw-bold mb-0">Freelance (Remote)</h5>
+              <h3 class="h6 fw-bold mb-0">Freelance (Remote)</h3>
               <span class="badge bg-success">Remote</span>
             </div>
             <div class="small text-muted mb-2">Global Clients • Ongoing</div>
@@ -424,7 +425,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="card h-100 shadow">
           <div class="card-body">
-            <h5 class="card-title">Learning Management System (LMS)</h5>
+            <h3 class="h5 card-title">Learning Management System (LMS)</h3>
             <p class="card-text">Custom LMS for schools with online lessons, student tracking, and assignments.</p>
             <p><strong>Tech:</strong> PHP, Laravel, MySQL, Bootstrap, jQuery</p>
           </div>
@@ -433,7 +434,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="card h-100 shadow">
           <div class="card-body">
-            <h5 class="card-title">School Management System</h5>
+            <h3 class="h5 card-title">School Management System</h3>
             <p class="card-text">Complete solution for timetable, lesson planning, holidays, and parent portal access.</p>
             <p><strong>Tech:</strong> Laravel, MySQL, AJAX, Bootstrap</p>
           </div>
@@ -442,7 +443,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="card h-100 shadow">
           <div class="card-body">
-            <h5 class="card-title">E-Commerce Platforms</h5>
+            <h3 class="h5 card-title">E-Commerce Platforms</h3>
             <p class="card-text">Multiple e-commerce solutions with secure payment integration and order management.</p>
             <p><strong>Tech:</strong> PHP, CodeIgniter, MySQL, REST APIs, Bootstrap</p>
           </div>
@@ -451,7 +452,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
         <div class="card h-100 shadow">
           <div class="card-body">
-            <h5 class="card-title">API Integrations</h5>
+            <h3 class="h5 card-title">API Integrations</h3>
             <p class="card-text">Implemented APIs for payment gateways, SMS services, and social login.</p>
             <p><strong>Tech:</strong> PHP, REST APIs, JSON, OAuth</p>
           </div>
@@ -460,7 +461,7 @@
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
         <div class="card h-100 shadow">
           <div class="card-body">
-            <h5 class="card-title">Marketing & CRM Solutions</h5>
+            <h3 class="h5 card-title">Marketing & CRM Solutions</h3>
             <p class="card-text">Custom CRM and marketing automation tools to manage leads, sales pipelines, and customer engagement.</p>
             <p><strong>Tech:</strong> PHP, Laravel, MySQL, Bootstrap, Email APIs</p>
           </div>
@@ -485,7 +486,7 @@
                 <i class="fas fa-user"></i>
               </div>
               <div>
-                <h5 class="mb-0">Kishan Bundel</h5>
+                <h3 class="h5 mb-0">Kishan Bundel</h3>
                 <small class="text-muted">Full-Stack PHP Developer (Laravel & CI)</small>
               </div>
             </div>
@@ -545,12 +546,14 @@
     </div>
   </div>
   
-</section>
+ </section>
 
 <!-- Footer -->
 <footer class="bg-primary text-white text-center py-3">
   <p class="mb-0">&copy; 2025 Kishan Bundel. All Rights Reserved.</p>
-</footer>
+ </footer>
+
+</main>
 
 <!-- Advanced Chatbot (Bootstrap-only) -->
 <button type="button"
@@ -575,7 +578,7 @@
         <i class="fas fa-minus"></i>
       </button>
     </div>
-    <h5 class="mb-1 fw-bold">🤖 Kishan's AI Assistant</h5>
+  <h3 class="h5 mb-1 fw-bold">🤖 Kishan's AI Assistant</h3>
     <div class="d-flex align-items-center justify-content-center gap-2 small opacity-75">
       <span class="badge bg-success">Online</span>
       <span>• <span id="responseTime">~1s</span></span>
