@@ -15,6 +15,9 @@
     <meta property="og:url" content="https://kishan-bundel.github.io/portfolio/">
     <meta property="og:image" content="https://kishan-bundel.github.io/portfolio/kishan-bundel-profile-photo.jpg">
     <link rel="icon" href="kishan-bundel-profile-photo.jpg" type="image/png">
+  <!-- Preconnects for faster font fetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Critical font preloads (Roboto regular & bold) -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2">
@@ -84,25 +87,25 @@
     <div class="row g-3 mb-5" data-aos="fade-up" data-aos-delay="50">
       <div class="col-6 col-md-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100 d-flex flex-column align-items-center justify-content-center">
-          <div class="text-primary fw-bold fs-4" data-counter="5">5+</div>
+          <div class="text-primary fw-bold fs-4" data-counter="5" style="min-width:3ch;display:inline-block;">5+</div>
           <div class="small text-muted text-center">Years Experience</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100 d-flex flex-column align-items-center justify-content-center">
-          <div class="text-primary fw-bold fs-4" data-counter="50">50+</div>
+          <div class="text-primary fw-bold fs-4" data-counter="50" style="min-width:3ch;display:inline-block;">50+</div>
           <div class="small text-muted text-center">Projects Delivered</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100 d-flex flex-column align-items-center justify-content-center">
-          <div class="text-primary fw-bold fs-4" data-counter="98">98%</div>
+          <div class="text-primary fw-bold fs-4" data-counter="98" style="min-width:3ch;display:inline-block;">98%</div>
           <div class="small text-muted text-center">Client Satisfaction</div>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-white rounded-3 shadow-sm p-3 h-100 d-flex flex-column align-items-center justify-content-center">
-          <div class="text-primary fw-bold fs-4" data-counter="25">25+</div>
+          <div class="text-primary fw-bold fs-4" data-counter="25" style="min-width:3ch;display:inline-block;">25+</div>
           <div class="small text-muted text-center">API Integrations</div>
         </div>
       </div>
@@ -278,25 +281,25 @@
     <div class="row g-3 mb-5" data-aos="fade-up" data-aos-delay="60">
       <div class="col-6 col-md-3">
         <div class="bg-light rounded-3 p-3 h-100 text-center border">
-          <div class="text-primary fw-bold fs-5" data-counter="5">5+</div>
+          <div class="text-primary fw-bold fs-5" data-counter="5" style="min-width:3ch;display:inline-block;">5+</div>
           <small class="text-muted d-block">Years Industry</small>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-light rounded-3 p-3 h-100 text-center border">
-          <div class="text-primary fw-bold fs-5" data-counter="4">4</div>
+          <div class="text-primary fw-bold fs-5" data-counter="4" style="min-width:3ch;display:inline-block;">4</div>
           <small class="text-muted d-block">Companies</small>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-light rounded-3 p-3 h-100 text-center border">
-          <div class="text-primary fw-bold fs-5" data-counter="50">50+</div>
+          <div class="text-primary fw-bold fs-5" data-counter="50" style="min-width:3ch;display:inline-block;">50+</div>
           <small class="text-muted d-block">Projects</small>
         </div>
       </div>
       <div class="col-6 col-md-3">
         <div class="bg-light rounded-3 p-3 h-100 text-center border">
-          <div class="text-primary fw-bold fs-5" data-counter="100">100%</div>
+          <div class="text-primary fw-bold fs-5" data-counter="100" style="min-width:3ch;display:inline-block;">100%</div>
           <small class="text-muted d-block">Delivery Rate</small>
         </div>
       </div>
@@ -543,7 +546,7 @@
       <div class="col-lg-7">
         <div class="card h-100 shadow border-0 overflow-hidden">
           <div class="ratio ratio-16x9">
-            <img src="assets/img/contact-banner.svg" alt="Contact Kishan Bundel" class="w-100 h-100 object-fit-cover">
+            <img src="assets/img/contact-banner.svg" alt="Contact Kishan Bundel" class="w-100 h-100 object-fit-cover" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low">
           </div>
           <div class="card-body p-4">
             <p class="mb-0 text-muted">Prefer WhatsApp or Email? Use the quick buttons on the left to get in touch instantly.</p>
@@ -633,8 +636,6 @@
     </div>
   </div>
 </div>
-
-
 <!-- Scripts -->
 <script src="assets/js/bootstrap.bundle.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
