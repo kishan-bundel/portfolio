@@ -22,19 +22,17 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2">
   <!-- Local CSS Files (preload + swap to improve FCP/LCP) -->
-  <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link href="assets/css/bootstrap.min.css" rel="stylesheet"></noscript>
-  <link rel="preload" href="assets/css/google-fonts.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link href="assets/css/google-fonts.css" rel="stylesheet"></noscript>
-  <link rel="preload" href="assets/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link href="assets/css/font-awesome.min.css" rel="stylesheet"></noscript>
+  <!-- Blocking CSS to prevent large layout shifts (remove preload swap for stability) -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/google-fonts.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <!-- AOS will be loaded lazily after first scroll / interaction -->
   <!-- Lazy AOS loader moved to external main.js -->
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="min-height:56px;">
   <div class="container">
     <a class="navbar-brand" href="#">Kishan Bundel</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
@@ -567,9 +565,10 @@
 
 <!-- Advanced Chatbot (Bootstrap-only) -->
 <button type="button"
-  class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 mb-2 mb-md-4 me-2 me-md-4 p-3 shadow z-3"
+  class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 mb-2 mb-md-4 me-2 me-md-4 shadow z-3"
+  style="width:64px;height:64px;"
   onclick="toggleChatbot()" id="chatbotToggle" title="Chat with AI Assistant">
-  <i class="fas fa-comments fs-4"></i>
+  <i class="fas fa-comments fs-4" aria-hidden="true"></i>
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="notificationBadge">1</span>
   <span class="visually-hidden">Open chat</span>
   
