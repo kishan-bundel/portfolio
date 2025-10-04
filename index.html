@@ -953,6 +953,22 @@
     
     // Load chat history
     loadChatHistory();
+
+    // Auto-collapse navbar on mobile after clicking a menu item
+    const navLinks = document.querySelectorAll('.navbar .nav-link');
+    const collapseEl = document.getElementById('navbarNav');
+    const toggler = document.querySelector('.navbar-toggler');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (!collapseEl || !toggler) return;
+        // Check if toggler is visible (mobile view) and collapse is shown
+        const togglerVisible = window.getComputedStyle(toggler).display !== 'none';
+        if (togglerVisible && collapseEl.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getInstance(collapseEl) || new bootstrap.Collapse(collapseEl, { toggle: false });
+          bsCollapse.hide();
+        }
+      });
+    });
     
     // Show notification after 10 seconds if not opened
     setTimeout(() => {
