@@ -1,0 +1,92 @@
+# ----------------------------------------------------------------------
+# Performance & Caching Configuration
+# ----------------------------------------------------------------------
+
+# Enable compression (mod_deflate)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
+
+# Brotli if available (mod_brotli)
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/plain text/html text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+  BrotliCompressionQuality 5
+</IfModule>
+
+# Cache busting: assume files are versioned or can be invalidated manually.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Images: long cache
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  # Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff  "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/font-woff  "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  # CSS & JS (fingerprint via manual bump if changed)
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  # HTML (short cache)
+  ExpiresByType text/html "access plus 5 minutes"
+</IfModule>
+
+# Add cache-control headers
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|woff2?|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Correct MIME types for fonts & SVG
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+AddType application/font-woff2 .woff2
+AddType application/font-woff  .woff
+AddType font/ttf .ttf
+AddType font/otf .otf
+
+# Security basics (bonus)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-XSS-Protection "1; mode=block"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# Gzip/Brotli already handle; ensure old ETag patterns minimal
+FileETag MTime Size
+
+# Fallback: ensure index.html served
+DirectoryIndex index.html
+
+# Disable directory listing
+Options -Indexes
+
+# Remove query strings from static caching if added manually for busting
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Example: serve file?v=123 as file
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\? [NC]
+  RewriteRule ^ %1 [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# End of file
+# ----------------------------------------------------------------------

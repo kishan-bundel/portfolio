@@ -15,6 +15,9 @@
     <meta property="og:url" content="https://kishan-bundel.github.io/portfolio/">
     <meta property="og:image" content="https://kishan-bundel.github.io/portfolio/kishan-bundel-profile-photo.jpg">
     <link rel="icon" href="kishan-bundel-profile-photo.jpg" type="image/png">
+    <!-- Critical font preloads (Roboto regular & bold) -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2">
   <!-- Local CSS Files (preload + swap to improve FCP/LCP) -->
   <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link href="assets/css/bootstrap.min.css" rel="stylesheet"></noscript>
@@ -22,8 +25,28 @@
   <noscript><link href="assets/css/google-fonts.css" rel="stylesheet"></noscript>
   <link rel="preload" href="assets/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link href="assets/css/font-awesome.min.css" rel="stylesheet"></noscript>
-  <link rel="preload" href="assets/css/aos.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link href="assets/css/aos.css" rel="stylesheet"></noscript>
+  <!-- AOS will be loaded lazily after first scroll / interaction -->
+  <script>
+    (function(){
+      let aosLoaded=false;
+      function loadAOS(){
+        if(aosLoaded) return; aosLoaded=true;
+        const link=document.createElement('link');
+        link.rel='stylesheet';
+        link.href='assets/css/aos.css';
+        document.head.appendChild(link);
+        const script=document.createElement('script');
+        script.src='assets/js/aos.js';
+        script.defer=true;
+        script.onload=function(){ if(window.AOS){ AOS.init({ once:true, duration:700, easing:'ease-out' }); } };
+        document.head.appendChild(script);
+        window.removeEventListener('scroll', onScroll, { passive:true });
+      }
+      function onScroll(){ if(window.scrollY>150) loadAOS(); }
+      window.addEventListener('scroll', onScroll, { passive:true });
+      ['pointerdown','keydown'].forEach(evt=>window.addEventListener(evt, loadAOS, { once:true, passive:true }));
+    })();
+  </script>
 </head>
 <body>
 
@@ -63,7 +86,7 @@
     <h2 class="text-center fw-bold mb-5" data-aos="fade-up">About Me</h2>
     <div class="row align-items-center">
       <div class="col-md-5 text-center mb-4 mb-md-0" data-aos="fade-right">
-  <img src="kishan-bundel-profile-photo.jpg" alt="Kishan Bundel" class="img-fluid rounded-circle about-img" loading="lazy" width="400" height="400">
+  <img src="kishan-bundel-profile-photo.jpg" alt="Kishan Bundel" class="img-fluid rounded-circle about-img" loading="lazy" width="400" height="400" fetchpriority="high">
       </div>
       <div class="col-md-7" data-aos="fade-up">
         <p>I am a Freelance Full-Stack PHP Developer specializing in Laravel and CodeIgniter frameworks. I build scalable web solutions, E-commerce platforms, APIs, Marketing & CRM automation tools, and school management systems (LMS). Experienced in handling remote projects for international and domestic clients. Passionate about delivering optimized and high-performance solutions for businesses.</p>
@@ -634,7 +657,6 @@
 
 <!-- Scripts -->
 <script src="assets/js/bootstrap.bundle.min.js" defer></script>
-<script src="assets/js/aos.js" defer></script>
 <script>
   // Initialize AOS after full load to avoid delaying first paint
   window.addEventListener('load', () => { if (window.AOS) { AOS.init({ duration: 1000, once: true }); } });
@@ -909,9 +931,9 @@
           ${formatMessage(message)}
           <div class="text-muted small mt-1 text-start">${currentTime}</div>
           <div class="d-flex gap-1 mt-2 opacity-0 message-reactions" style="transition: opacity 0.3s ease;">
-            <button class="btn btn-light btn-sm rounded-pill px-2 py-1" onclick="reactToMessage(this, '👍')" style="font-size: 12px;">👍</button>
-            <button class="btn btn-light btn-sm rounded-pill px-2 py-1" onclick="reactToMessage(this, '❤️')" style="font-size: 12px;">❤️</button>
-            <button class="btn btn-light btn-sm rounded-pill px-2 py-1" onclick="reactToMessage(this, '😊')" style="font-size: 12px;">😊</button>
+            <button class="btn btn-light btn-sm rounded-pill" onclick="reactToMessage(this, '👍')" style="font-size: 12px;">👍</button>
+            <button class="btn btn-light btn-sm rounded-pill" onclick="reactToMessage(this, '❤️')" style="font-size: 12px;">❤️</button>
+            <button class="btn btn-light btn-sm rounded-pill" onclick="reactToMessage(this, '😊')" style="font-size: 12px;">😊</button>
           </div>
         </div>
       `;
@@ -1422,56 +1444,44 @@ LinkedIn: linkedin.com/in/kishanbundel - *Connect & see testimonials*
     }
   }, 8000);
 
-  // Initialize everything when page loads
+  // Initialize everything when page loads (voice prewarm + minimal intro)
   window.addEventListener('load', function() {
     try {
-      // Preload voices for speech synthesis
       if (window.speechSynthesis) {
         window.speechSynthesis.getVoices();
       }
-      
-      // Add some nice entrance animations
       setTimeout(() => {
         const toggle = document.getElementById('chatbotToggle');
-        if (toggle) {}
+        if (toggle) {
+          // reserved for subtle effect if needed
+        }
       }, 500);
-      
-    } catch (error) {
-      console.error('❌ Chatbot initialization error:', error);
-    }
+    } catch(e) { console.warn('Init error', e); }
   });
 
-  // Global error handler for better debugging
-  window.addEventListener('error', function(event) {
-    if (event.filename && event.filename.includes('index.html')) {
-      console.error('Chatbot Script Error:', event.error);
-    }
-  });
-
-  // Animated counters for Skills metrics
-  (function() {
+  // Counter animations (metrics)
+  (function(){
     const counters = document.querySelectorAll('[data-counter]');
     if (!counters.length) return;
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.getAttribute('data-counter'), 10);
-          if (isNaN(target)) return;
-          let start = 0;
-          const duration = 900;
-          const step = Math.max(1, Math.ceil(target / (duration / 30)));
-          const timer = setInterval(() => {
-            start += step;
-            if (start >= target) {
-              el.textContent = el.textContent.includes('%') ? target + '%' : target + (el.textContent.includes('+') ? '+' : '');
-              clearInterval(timer);
-            } else {
-              el.textContent = el.textContent.includes('%') ? start + '%' : start + (el.textContent.includes('+') ? '+' : '');
-            }
-          }, 30);
-          observer.unobserve(el);
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-counter'), 10);
+        if (isNaN(target)) { obs.unobserve(el); return; }
+        let start = 0;
+        const duration = 900; // ms
+        const step = Math.max(1, Math.ceil(target / (duration / 30))); // 30ms per frame approx
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) {
+            el.textContent = el.textContent.includes('%') ? target + '%' : target + (el.textContent.includes('+') ? '+' : '');
+            clearInterval(timer);
+          } else {
+            el.textContent = el.textContent.includes('%') ? start + '%' : start + (el.textContent.includes('+') ? '+' : '');
+          }
+        }, 30);
+        obs.unobserve(el);
       });
     }, { threshold: 0.4 });
     counters.forEach(c => observer.observe(c));
