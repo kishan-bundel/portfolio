@@ -26,10 +26,11 @@
   <!-- Local CSS Files (preload + swap to improve FCP/LCP) -->
   <!-- Blocking CSS to prevent large layout shifts (remove preload swap for stability) -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/google-fonts.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <!-- AOS will be loaded lazily after first scroll / interaction -->
-  <!-- Lazy AOS loader moved to external main.js -->
+  <link rel="preload" href="assets/css/google-fonts.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/google-fonts.css"></noscript>
+  <style>
+    .fa, .fas, .fab {display:inline-block;width:1em;text-align:center;}
+  </style>
 </head>
 <body>
 
@@ -640,5 +641,24 @@
 <!-- Scripts -->
 <script src="assets/js/bootstrap.bundle.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<script>
+  // Defer Font Awesome to after full load to pull it off critical path
+  window.addEventListener('load', function(){
+    var fa = document.createElement('link');
+    fa.rel='stylesheet';
+    fa.href='assets/css/font-awesome.min.css';
+    fa.onload=function(){ /* Optionally remove fallback adjustments if needed */ };
+    document.head.appendChild(fa);
+  });
+  // Fallback: if load delays beyond 3s (slow network), ensure icons still readable
+  setTimeout(function(){
+    if(!document.querySelector('link[href*="font-awesome.min.css"]')){
+      var faInline=document.createElement('link');
+      faInline.rel='stylesheet';
+      faInline.href='assets/css/font-awesome.min.css';
+      document.head.appendChild(faInline);
+    }
+  },3000);
+ </script>
 </body>
 </html>
